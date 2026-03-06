@@ -9,7 +9,7 @@ while True:
     with SB(uc=True, locale="en",ad_block=True,chromium_arg='--disable-webgl',proxy = proxy_str) as attww:
         rnd = random.randint(450,800)
         
-        attww.activate_cdp_mode(urlt,tzone=f"{timezone_id}",geoloc=(latitude, longitude))
+        attww.activate_cdp_mode(urlt,tzone=f"{geo_data["timezone"]}",geoloc=(geo_data["lat"], geo_data["lon"]))
         attww.sleep(2)
         if attww.is_element_present('button:contains("Accept")'):
             attww.cdp.click('button:contains("Accept")', timeout=4)
@@ -26,7 +26,7 @@ while True:
                 attww.cdp.click('button:contains("Accept")', timeout=4)
             if True:
                 attww2 = attww.get_new_driver(undetectable=True)
-                attww2.activate_cdp_mode(urlt,tzone=f"{timezone_id}",geoloc=(latitude, longitude))
+                attww2.activate_cdp_mode(urlt,tzone=f"{geo_data["timezone"]}",geoloc=(geo_data["lat"], geo_data["lon"]))
                 attww2.sleep(10)
                 if attww2.is_element_present('button:contains("Start Watching")'):
                     attww2.cdp.click('button:contains("Start Watching")', timeout=4)
